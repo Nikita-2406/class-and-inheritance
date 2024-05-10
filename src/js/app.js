@@ -1,85 +1,84 @@
 // TODO: write your code here
-console.clear()
+console.clear();
+
+const MIN_LENGTH = 2;
+const MAX_LENGTH = 10;
+const TYPES = [
+  "Bowerman",
+  "Zombie",
+  "Daemon",
+  "Magician",
+  "Swordsman",
+  "Undead",
+];
+
 class Character {
-    constructor(name, type, attack, defence) {
-        this.name = name
-        this.type = type
-        this.health = 100
-        this.level = 1
-        this.attack = attack
-        this.defence = defence
+  constructor(name, type) {
+    if (name.length < 2 && name.length > 10) {
+      throw new Error(
+        `Имя персонажа доллно быть не менее ${MIN_LENGTH} и не более ${MAX_LENGTH}`
+      );
     }
+
+    if (!TYPES.includes(type)) {
+      throw new Error(
+        `Неверно введен тип персонада, выберите и введите одно из значений: ${TYPES.join(", ")}`
+      );
+    }
+
+    this.name = name;
+    this.type = type;
+    this.health = 100;
+    this.level = 1;
+    this.attack = undefined;
+    this.defence = undefined;
+  }
 }
 
 class Bowerman extends Character {
-    constructor(name, type) {
-        if (name.length >= 2 && name.length <= 10 && type === "Bowerman") {
-            super(name, type, 25, 25)
-        } else {
-            throw new Error("НЕ соблюдаются правила игры")
-        }
-    }
+  constructor(name, type) {
+    super(name, type);
+    this.attack = 25;
+    this.defence = 25;
+  }
 }
 
 class Zombie extends Character {
-    constructor(name, type) {
-        if (name.length >= 2 && name.length <= 10 && type === "Zombie") {
-            super(name, type, 40, 10)
-        } else {
-            throw new Error("НЕ соблюдаются правила игры")
-        }
-    }
+  constructor(name, type) {
+    super(name, type);
+    this.attack = 40;
+    this.defence = 10;
+  }
 }
 
 class Daemon extends Character {
-    constructor(name, type) {
-        if (name.length >= 2 && name.length <= 10 && type === "Daemon") {
-            super(name, type, 10, 40)
-        } else {
-            throw new Error("НЕ соблюдаются правила игры")
-        }
-    }
+  constructor(name, type) {
+    super(name, type);
+    this.attack = 10;
+    this.defence = 40;
+  }
 }
 
 class Magician extends Character {
-    constructor(name, type) {
-        if (name.length >= 2 && name.length <= 10 && type === "Magician") {
-            super(name, type, 10, 40)
-        } else {
-            throw new Error("НЕ соблюдаются правила игры")
-        }
-    }
+  constructor(name, type) {
+    super(name, type);
+    this.attack = 10;
+    this.defence = 40;
+  }
 }
 
 class Swordsman extends Character {
-    constructor(name, type) {
-        if (name.length >= 2 && name.length <= 10 && type === "Swordsman") {
-            super(name, type, 40, 10)
-        } else {
-            throw new Error("НЕ соблюдаются правила игры")
-        }
-    }
+  constructor(name, type) {
+    super(name, type);
+    this.attack = 40;
+    this.defence = 10;
+  }
 }
 
 class Undead extends Character {
-    constructor(name, type) {
-        if (name.length >= 2 && name.length <= 10 && type === "Undead") {
-            super(name, type, 25, 25)
-        } else {
-            throw new Error("НЕ соблюдаются правила игры")
-        }
-    }
+  constructor(name, type) {
+    super(name, type);
+    this.attack = 25;
+    this.defence = 25;
+  }
 }
-
-const bowerman = new Bowerman('111', 'Bowerman')
-const zombie = new Zombie('222', 'Zombie')
-const daemon = new Daemon('333', 'Daemon')
-const magician = new Magician('444', 'Magician')
-const swordsman = new Swordsman('555', 'Swordsman')
-const undead = new Undead('666', 'Undead')
-console.log(bowerman)
-console.log(zombie)
-console.log(daemon)
-console.log(magician)
-console.log(swordsman)
-console.log(undead)
